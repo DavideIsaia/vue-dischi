@@ -1,0 +1,12 @@
+@import "~bootstrap/scss/bootstrap.scss";
+@import "~@fontsource/montserrat/300.css";
+@import "~@fontsource/montserrat/600.css";
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #1e2d3b;
+}
+
+img {
+  max-width: 100%;
+}
