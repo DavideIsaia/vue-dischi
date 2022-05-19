@@ -9,18 +9,23 @@
         />
       </div>
     </div>
-    <div v-else class="container">LOADING</div>
+    <div v-else class="container">
+      <div class="my-loader text-center"><AppLoading /></div>
+    </div>
   </main>
 </template>
 
 <script>
 import DiscCard from "./DiscCard.vue";
+import AppLoading from "./AppLoading";
+
 import axios from "axios";
 
 export default {
   name: "AppMain",
   components: {
     DiscCard,
+    AppLoading,
   },
   data: function () {
     return {
@@ -39,4 +44,11 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.my-loader {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+</style>
