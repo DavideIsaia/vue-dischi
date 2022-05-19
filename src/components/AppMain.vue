@@ -1,13 +1,11 @@
 <template>
   <main class="container">
-    <div class="row d-flex flex-wrap">
-      <div class="col-2 mt-5">
-        <DiscCard
-          v-for="(element, index) in albums"
-          :key="index"
-          :albumObj="element"
-        />
-      </div>
+    <div class="row row-cols-6 mt-5">
+      <DiscCard
+        v-for="(element, index) in albums"
+        :key="index"
+        :albumObj="element"
+      />
     </div>
   </main>
 </template>
