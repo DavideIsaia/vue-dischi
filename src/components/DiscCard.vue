@@ -1,10 +1,7 @@
 <template>
-  <div class="my-card text-center">
-    <img
-      src="https:\/\/www.onstageweb.com\/wp-content\/uploads\/2018\/09\/bon-jovi-new-jersey.jpg"
-      alt=""
-    />
-    <h2>Titolo</h2>
+  <div class="my-card text-center p-3">
+    <img :src="albumObj.poster" alt="" />
+    <h2 class="p-3">Titolo</h2>
     <h3>Artista</h3>
     <h3>Anno</h3>
   </div>
@@ -13,6 +10,9 @@
 <script>
 export default {
   name: "DiscCard",
+  props: {
+    albumObj: Object,
+  },
 };
 </script>
 

@@ -2,7 +2,11 @@
   <main class="container">
     <div class="row d-flex flex-wrap">
       <div class="col-2 mt-5">
-        <DiscCard />
+        <DiscCard
+          v-for="(element, index) in albums"
+          :key="index"
+          :albumObj="element"
+        />
       </div>
     </div>
   </main>
@@ -10,11 +14,24 @@
 
 <script>
 import DiscCard from "./DiscCard.vue";
+import axios from "axios";
 
 export default {
   name: "AppMain",
   components: {
     DiscCard,
+  },
+  data: function () {
+    return {
+      albums: [],
+    };
+  },
+  created() {
+    axios
+      .get("https://flynn.boolean.careers/exercises/api/array/music")
+      .then((resp) => {
+        this.albums = resp.data.response;
+      });
   },
 };
 </script>
