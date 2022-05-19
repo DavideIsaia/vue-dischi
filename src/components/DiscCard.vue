@@ -16,8 +16,14 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .my-card {
   background-color: #2e3a46;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    opacity: 0.7;
+  }
 }
 </style>

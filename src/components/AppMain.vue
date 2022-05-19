@@ -1,12 +1,15 @@
 <template>
-  <main class="container">
-    <div class="row row-cols-6 mt-5">
-      <DiscCard
-        v-for="(element, index) in albums"
-        :key="index"
-        :albumObj="element"
-      />
+  <main>
+    <div v-if="success" class="container">
+      <div class="row row-cols-3 row-cols-lg-6 mt-5">
+        <DiscCard
+          v-for="(element, index) in albums"
+          :key="index"
+          :albumObj="element"
+        />
+      </div>
     </div>
+    <div v-else class="container">LOADING</div>
   </main>
 </template>
 
@@ -22,6 +25,7 @@ export default {
   data: function () {
     return {
       albums: [],
+      success: false,
     };
   },
   created() {
@@ -29,6 +33,7 @@ export default {
       .get("https://flynn.boolean.careers/exercises/api/array/music")
       .then((resp) => {
         this.albums = resp.data.response;
+        this.success = resp.data.success;
       });
   },
 };
