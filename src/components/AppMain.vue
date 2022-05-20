@@ -2,7 +2,10 @@
   <main>
     <div v-if="success" class="container">
       <div class="row row-cols-1">
-        <AppSearch @searchSelected="optionSelected($event)" />
+        <AppSearch
+          @searchSelected="optionSelected($event)"
+          :genres="arrayGenres"
+        />
         <AppSearchArtist
           @searchArtist="artistSelected($event)"
           :authors="arrayAuthors"
@@ -44,6 +47,7 @@ export default {
       genre: "",
       author: "",
       arrayAuthors: [],
+      arrayGenres: [],
     };
   },
   created() {
@@ -53,6 +57,7 @@ export default {
         this.albums = resp.data.response;
         this.success = resp.data.success;
         this.getAuthors();
+        this.getGenres();
       });
   },
   computed: {
@@ -77,6 +82,12 @@ export default {
       this.albums.forEach((element) => {
         if (!this.arrayAuthors.includes(element.author))
           this.arrayAuthors.push(element.author);
+      });
+    },
+    getGenres() {
+      this.albums.forEach((element) => {
+        if (!this.arrayGenres.includes(element.genre))
+          this.arrayGenres.push(element.genre);
       });
     },
   },
