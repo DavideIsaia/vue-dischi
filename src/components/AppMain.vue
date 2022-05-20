@@ -1,6 +1,9 @@
 <template>
   <main>
     <div v-if="success" class="container">
+      <div class="row row-cols-1">
+        <AppSearch />
+      </div>
       <div class="row row-cols-3 row-cols-lg-6 mt-5">
         <DiscCard
           v-for="(element, index) in albums"
