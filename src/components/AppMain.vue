@@ -21,7 +21,7 @@
 <script>
 import DiscCard from "./DiscCard.vue";
 import AppLoading from "./AppLoading";
-
+import AppSearch from "./AppSearch.vue";
 import axios from "axios";
 
 export default {
@@ -29,6 +29,7 @@ export default {
   components: {
     DiscCard,
     AppLoading,
+    AppSearch,
   },
   data: function () {
     return {
