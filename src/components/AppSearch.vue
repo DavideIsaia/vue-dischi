@@ -28,12 +28,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-label {
-  color: white;
-
-  select {
-    min-width: 6rem;
-  }
-}
-</style>
+<style lang="scss" scoped></style>

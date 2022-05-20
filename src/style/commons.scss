@@ -28,4 +28,12 @@ select,
 option {
   font-weight: 600;
   font-size: 1.2rem;
+
+}
+label {
+  color: white;
+
+  select {
+    min-width: 6rem;
+  }
 }

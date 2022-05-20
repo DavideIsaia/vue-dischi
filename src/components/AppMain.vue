@@ -3,8 +3,9 @@
     <div v-if="success" class="container">
       <div class="row row-cols-1">
         <AppSearch @searchSelected="optionSelected($event)" />
+        <AppSearchArtist @searchArtist="artistSelected($event)" />
       </div>
-      <div class="row row-cols-3 row-cols-lg-6 mt-5">
+      <div class="row row-cols-3 row-cols-lg-6 mt-4">
         <DiscCard
           v-for="(element, index) in albumsFiltered"
           :key="index"
@@ -22,6 +23,7 @@
 import DiscCard from "./DiscCard.vue";
 import AppLoading from "./AppLoading";
 import AppSearch from "./AppSearch.vue";
+import AppSearchArtist from "./AppSearchArtist.vue";
 import axios from "axios";
 
 export default {
@@ -30,12 +32,14 @@ export default {
     DiscCard,
     AppLoading,
     AppSearch,
+    AppSearchArtist,
   },
   data: function () {
     return {
       albums: [],
       success: false,
       genre: "",
+      author: "",
     };
   },
   created() {
@@ -49,7 +53,10 @@ export default {
   computed: {
     albumsFiltered() {
       const filteredArray = this.albums.filter((element) => {
-        return element.genre.includes(this.genre);
+        return (
+          element.genre.includes(this.genre) &&
+          element.author.includes(this.author)
+        );
       });
       return filteredArray;
     },
@@ -57,6 +64,9 @@ export default {
   methods: {
     optionSelected(event) {
       this.genre = event;
+    },
+    artistSelected(event) {
+      this.author = event;
     },
   },
 };
