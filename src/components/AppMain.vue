@@ -3,7 +3,10 @@
     <div v-if="success" class="container">
       <div class="row row-cols-1">
         <AppSearch @searchSelected="optionSelected($event)" />
-        <AppSearchArtist @searchArtist="artistSelected($event)" />
+        <AppSearchArtist
+          @searchArtist="artistSelected($event)"
+          :authors="arrayAuthors"
+        />
       </div>
       <div class="row row-cols-3 row-cols-lg-6 mt-4">
         <DiscCard
@@ -40,6 +43,7 @@ export default {
       success: false,
       genre: "",
       author: "",
+      arrayAuthors: [],
     };
   },
   created() {
@@ -48,6 +52,7 @@ export default {
       .then((resp) => {
         this.albums = resp.data.response;
         this.success = resp.data.success;
+        this.getAuthors();
       });
   },
   computed: {
@@ -67,6 +72,12 @@ export default {
     },
     artistSelected(event) {
       this.author = event;
+    },
+    getAuthors() {
+      this.albums.forEach((element) => {
+        if (!this.arrayAuthors.includes(element.author))
+          this.arrayAuthors.push(element.author);
+      });
     },
   },
 };
