@@ -2,11 +2,11 @@
   <main>
     <div v-if="success" class="container">
       <div class="row row-cols-1">
-        <AppSearch @searchSelected="filteredGenre" />
+        <AppSearch @searchSelected="optionSelected($event)" />
       </div>
       <div class="row row-cols-3 row-cols-lg-6 mt-5">
         <DiscCard
-          v-for="(element, index) in albums"
+          v-for="(element, index) in albumsFiltered"
           :key="index"
           :albumObj="element"
         />
@@ -35,6 +35,7 @@ export default {
     return {
       albums: [],
       success: false,
+      genre: "",
     };
   },
   created() {
@@ -44,6 +45,19 @@ export default {
         this.albums = resp.data.response;
         this.success = resp.data.success;
       });
+  },
+  computed: {
+    albumsFiltered() {
+      const filteredArray = this.albums.filter((element) => {
+        return element.genre.includes(this.genre);
+      });
+      return filteredArray;
+    },
+  },
+  methods: {
+    optionSelected(event) {
+      this.genre = event;
+    },
   },
 };
 </script>

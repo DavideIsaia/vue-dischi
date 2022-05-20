@@ -2,13 +2,13 @@
   <label class="p-3 text-center" for="filter-search"
     >Filtra per genere musicale
     <select
-      @change="$emit('searchSelected')"
+      @change="$emit('searchSelected', searchText)"
       v-model="searchText"
       class="ms-4"
       name="filter-search"
       id="filter-search"
     >
-      <option value="All" selected>Tutti</option>
+      <option value="" selected>Tutti</option>
       <option value="Rock">Rock</option>
       <option value="Pop">Pop</option>
       <option value="Jazz">Jazz</option>
@@ -22,7 +22,7 @@ export default {
   name: "AppSearch",
   data() {
     return {
-      searchText: "All",
+      searchText: "",
     };
   },
 };
